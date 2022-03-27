@@ -1,0 +1,72 @@
+﻿@model VehicleLoan.Models.Loan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Customers.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="col-md-4">
+    <h4>@Session["UserID"].ToString() Loan Status</h4>
+    <hr />
+
+
+    <table class="table table-success table-striped table-bordered table-hover">
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Customers.Name)</td>
+            <td>@Html.DisplayFor(model => model.Customers.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.VehicleBrand)</td>
+            <td> @Html.DisplayFor(model => model.VehicleBrand)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Model)</td>
+            <td>@Html.DisplayFor(model => model.Model)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.OnRoadPrice)</td>
+            <td>@Html.DisplayFor(model => model.OnRoadPrice)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Status)</td>
+
+            @if (Model.Status.Equals("Accepted"))
+            {
+                <td style="color:forestgreen">
+                    <b>
+                        @Html.DisplayFor(model => model.Status)
+                    </b>
+                </td>
+            }
+            else if (Model.Status.Equals("Declined"))
+            {
+                <td style="color:red">
+                    <b>
+                        @Html.DisplayFor(model => model.Status)
+                    </b>
+                </td>
+            }
+            else
+            {
+                <td style="background-color:orangered;color:orange">
+                    <b>
+                        @Html.DisplayFor(model => model.Status)
+                    </b>
+                </td>
+            }
+
+        </tr>
+    </table>
+
+</div>
+<p>
+    @if (Model.Status.Equals("Processing"))
+    {
+        @Html.ActionLink("Delete", "Delete",null, new { id = Model.LoanID }, new {@class="btn btn-danger"})
+    }
+
+    @Html.ActionLink("Back to List", "DashBoard")
+</p>
+

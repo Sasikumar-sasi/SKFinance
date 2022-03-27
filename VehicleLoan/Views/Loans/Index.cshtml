@@ -1,0 +1,78 @@
+﻿@model IEnumerable<VehicleLoan.Models.Loan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Customers.cshtml";
+}
+
+<h2>Loan Details</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customers.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleBrand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OnRoadPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+
+        if (item.CustomerID == ViewBag.ID)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customers.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleBrand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OnRoadPrice)
+                </td>
+
+                @if (item.Status.Equals("Accepted"))
+                {
+                    <td style="color:forestgreen;font-weight:bold">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                }
+                else if (item.Status.Equals("Declined"))
+                {
+                    <td style="color:red;font-weight:bold">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                }
+                else
+                {
+                    <td style="color:orange;font-weight:bold">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                }
+
+                <td>
+
+                    @Html.ActionLink("Details", "Details", new { id = item.LoanID })
+
+                </td>
+            </tr>
+        }
+    }
+
+</table>

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/_Customers.cshtml";
+}
+
+
+
+<h2>Welcome to SK FINANCE</h2>
+<h3>Hello @ViewBag.Name</h3>
+
+@Html.ActionLink("Apply Loan", "Create", "Loans", null, new {@class="btn btn-success"})
+
+@Html.ActionLink("Check Status", "Index", "Loans", null, new {@class="btn btn-warning"})
+
+

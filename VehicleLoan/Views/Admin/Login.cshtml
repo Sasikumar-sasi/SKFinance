@@ -1,0 +1,50 @@
+﻿@model VehicleLoan.Models.Admin
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Admin Login Portal</h2>
+
+@using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+{
+    <fieldset>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a => a.AdminName)</td>
+                <td>@Html.TextBoxFor(a => a.AdminName)</td>
+                <td>@Html.ValidationMessageFor(a => a.AdminName)</td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.Password)</td>
+                <td>@Html.PasswordFor(a => a.Password)</td>
+                <td>@Html.ValidationMessageFor(a => a.Password)</td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Login" /></td>
+                <td></td>
+            </tr>
+        </table>
+        <br />
+
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+
+    </fieldset>
+}
+
+
+
+

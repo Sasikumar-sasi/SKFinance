@@ -1,0 +1,69 @@
+﻿@model VehicleLoan.Models.Loan
+
+@{
+    ViewBag.Title = "DetailsLoan";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>DetailsLoan</h2>
+
+<div class="col-md-4">
+    <h4>Loan</h4>
+    <hr />
+    <table class="table table-success table-striped table-bordered table-hover">
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Customers.Name)</td>
+            <td>@Html.DisplayFor(model => model.Customers.Name)</td>
+            
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.VehicleBrand)</td>
+            <td> @Html.DisplayFor(model => model.VehicleBrand)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Model)</td>
+            <td>@Html.DisplayFor(model => model.Model)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.OnRoadPrice)</td>
+            <td>@Html.DisplayFor(model => model.OnRoadPrice)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Status)</td>
+
+            @if (Model.Status.Equals("Accepted"))
+            {
+                <td style="background-color:lawngreen;color:forestgreen">
+                    <b>
+                        @Html.DisplayFor(model => model.Status)
+                    </b>
+                </td>
+            }
+
+            else if (Model.Status.Equals("Declined"))
+            {
+                <td style="color:red">
+                    <b>
+                        @Html.DisplayFor(model => model.Status)
+                    </b>
+                </td>
+            }
+
+            else
+            {
+                <td style="color:orange">
+                    <b>
+                        @Html.DisplayFor(model => model.Status)
+                    </b>
+                    @Html.ActionLink("Accept", "Accepted", "Admin", new { id = Model.LoanID }, new { @class = "btn btn-success btn-xs" })
+                    @Html.ActionLink("Decline", "Declined", "Admin", new { id = Model.LoanID }, new { @class = "btn btn-danger btn-xs" })
+
+                </td>
+            }
+
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "ViewLoans")
+</p>

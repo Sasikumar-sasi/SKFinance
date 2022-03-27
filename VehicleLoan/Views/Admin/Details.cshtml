@@ -1,0 +1,35 @@
+﻿@model VehicleLoan.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="col-md-4">
+    <h4>Customer</h4>
+    <hr />
+
+    <table class="table table-danger table-striped table-bordered table-hover">
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Name)</td>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+        <td>@Html.DisplayFor(model => model.Name)</td>
+        <td>@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.PhoneNumber)</td>
+            <td>@Html.DisplayFor(model => model.PhoneNumber)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.City)</td>
+            <td>@Html.DisplayFor(model => model.City)</td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

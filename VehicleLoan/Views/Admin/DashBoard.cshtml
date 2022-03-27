@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Admin  DashBoard</h2>
+<h3>Welcome @ViewBag.Name</h3>
+@Html.ActionLink("View Customers", "Index", "Admin", null, new {@class="btn btn-primary"})
+@Html.ActionLink("View Loan", "ViewLoans", "Admin", null, new {@class="btn btn-primary"})
+

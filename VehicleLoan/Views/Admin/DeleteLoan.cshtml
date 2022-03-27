@@ -1,0 +1,65 @@
+﻿@model VehicleLoan.Models.Loan
+
+@{
+    ViewBag.Title = "DeleteLoan";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>DeleteLoan</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Loan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customers.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customers.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleBrand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleBrand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OnRoadPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OnRoadPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ViewLoans")
+        </div>
+    }
+</div>

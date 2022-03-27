@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+
+</head>
+<body style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+
+    <nav class="navbar navbar-expand-sm " style="background-color:blueviolet">
+        <div class="container-fluid ">
+            <a class="navbar-brand" style="color:moccasin" href="javascript:void(0)">SK FINANCE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link text-light" })
+                    </li>
+                    @if (Session["UserID"] != null)
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Dash Board", "Dashboard", "Loans", null, new { @class = "nav-link text-light" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Apply Loan", "Create", "Loans", null, new { @class = "nav-link text-light" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("View Loan", "Index", "Loans", null, new { @class = "nav-link text-light" })
+                        </li>
+                    }
+                    </ul>
+                <div style="margin-right:20px">
+                    @Html.ActionLink("Register new User", "Create", "Customers", null, new { @class = "d-flex btn btn-default bg-success btn-sm" })
+                </div>
+                @if (Session["UserID"] != null)
+                {
+                <div style="margin-right:7%">
+                    <form class="d-flex">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown">
+                                @ViewBag.Name
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("My Details", "Details", "Customers", new { id = Convert.ToInt32(Session["CustomerID"]) }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Edit", "Edit", "Customers", new { id = Convert.ToInt32(Session["CustomerID"]) }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Logout", "Logout", "Customers", null, new { @class = "dropdown-item" })</li>
+                            </ul>
+                        </div>
+                    </form>
+                    
+                </div>
+                }
+            </div>
+            </div>
+    </nav>
+
+
+    <div class="container body-content">
+        @RenderBody()
+
+        <footer style="position:fixed;bottom:0px;color:coral;width:100%">
+            <hr />
+            <p>&copy; @DateTime.Now.Year - SASI CODES</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
